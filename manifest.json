@@ -1,0 +1,51 @@
+{
+  "version": "2.3",
+  "model": "Creality K2 Plus / F008",
+  "firmware": "1.1.7.0",
+  "slicer": "Creality Print 7.3 over LAN",
+  "upstream_commit": "ef8fd5d87580e4c43f9f09525d46203aa977ecf7",
+  "files": {
+    "/mnt/UDISK/printer_data/config/printer.cfg": {
+      "repository_path": "payload/mnt/UDISK/printer_data/config/printer.cfg",
+      "sha256": "90ecbdc56d50296373e4f62c58d58a0239e73086ce488a8bf74ccdedca8b5344",
+      "bytes": 10346,
+      "stock_sha256": "3445d77b7a9e347b3995574fa981920ec3fd2f8fa2a58566530969f5c5fc08a8"
+    },
+    "/mnt/UDISK/printer_data/config/KAMP/Full_Bed_Calibrate.cfg": {
+      "repository_path": "payload/mnt/UDISK/printer_data/config/KAMP/Full_Bed_Calibrate.cfg",
+      "sha256": "bcb04718722365babdf330ca42b7b9b6098d49a452a5d23307cca75c0862ebe7",
+      "bytes": 1903,
+      "stock_sha256": null
+    },
+    "/mnt/UDISK/printer_data/config/KAMP/Adaptive_Meshing.cfg": {
+      "repository_path": "payload/mnt/UDISK/printer_data/config/KAMP/Adaptive_Meshing.cfg",
+      "sha256": "9c3f063ea80cbe3fbc6abc170bc9acae7a166c81fe316d7b5721bdd8c578f3f6",
+      "bytes": 12948,
+      "stock_sha256": null
+    },
+    "/mnt/UDISK/printer_data/config/KAMP/KAMP_Settings.cfg": {
+      "repository_path": "payload/mnt/UDISK/printer_data/config/KAMP/KAMP_Settings.cfg",
+      "sha256": "ad6001e5a4ec81a60a373d93e4da73a72b404136e5edb33bdf6caa0eb285e77f",
+      "bytes": 469,
+      "stock_sha256": null
+    },
+    "/mnt/UDISK/printer_data/config/KAMP/Guarded_Commands.cfg": {
+      "repository_path": "payload/mnt/UDISK/printer_data/config/KAMP/Guarded_Commands.cfg",
+      "sha256": "e5b0d82d84806cce643d05b940b802a6a74d39a1184d91b9d06b263b7c33354e",
+      "bytes": 1921,
+      "stock_sha256": null
+    },
+    "/usr/share/klipper/klippy/extras/restore_bed_mesh.py": {
+      "repository_path": "payload/usr/share/klipper/klippy/extras/restore_bed_mesh.py",
+      "sha256": "87b4d914a777f05f3db2083d6349f3815b52b84c3f81abf6a2a50a52c7ad9fc3",
+      "bytes": 14496,
+      "stock_sha256": null
+    },
+    "/mnt/UDISK/printer_data/config/gcode_macro.cfg": {
+      "repository_path": "payload/mnt/UDISK/printer_data/config/gcode_macro.cfg",
+      "sha256": "e158625bcf00431d158002e8c7be42652936d4e24505e6c5312b233fe4785158",
+      "bytes": 38997,
+      "stock_sha256": "e0227cf9d1569e4b8b4519a1b6f3523365aee2cb786dc710ea7ae887e9f5d73a"
+    }
+  }
+}

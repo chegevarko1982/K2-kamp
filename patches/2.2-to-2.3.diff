@@ -1,0 +1,18 @@
+--- v2.2/mnt/UDISK/printer_data/config/gcode_macro.cfg
++++ v2.3/mnt/UDISK/printer_data/config/gcode_macro.cfg
+@@ -530,7 +530,6 @@
+   M190 S{BED_TEMP}
+   M109 S{EXTRUDER_WAITTEMP}
+   SET_G29_FLAG VALUE=1
+-  G28 Z
+   BED_MESH_CLEAR
+   M104 S{EXTRUDER_WAITTEMP}
+   M190 S{BED_TEMP}
+@@ -538,6 +537,7 @@
+   # 精擦嘴后做一次光电找平获取最大Z轴高度值
+   ZDOWN_SWITCH ENABLE=1
+   G28 Z
++  ZDOWN_SWITCH ENABLE=0
+   BED_MESH_CLEAR
+   Z_TILT_ADJUST WAITTIME=5
+   NEXT_HOMEZ_NACCU

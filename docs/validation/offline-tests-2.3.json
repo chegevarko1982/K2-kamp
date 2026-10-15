@@ -1,0 +1,7 @@
+{
+  "tests_run": 49,
+  "failures": 0,
+  "errors": 0,
+  "success": true,
+  "scope": "offline; real saved bed_mesh command/update/finalize/save code, mocked probe and C-backed ZMesh; no hardware validation"
+}

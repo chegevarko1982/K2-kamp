@@ -1,0 +1,17 @@
+{
+  "version": "2.3",
+  "timestamp_moscow": "2026-10-15T14:00:50.385901+03:00",
+  "checks": {
+    "printer_ready": true,
+    "all_nine_hashes_match": true,
+    "loaded_start_print_matches_v23": true,
+    "kamp_ready": true,
+    "kamp_idle": true,
+    "motor_ready": true,
+    "no_active_file": true,
+    "all_heater_targets_zero": true,
+    "default_profile_unchanged": true,
+    "no_errors_in_latest_start_segment": false
+  },
+  "note": "Startup verified by read-only API, hashes and loaded START_PRINT. Raw callback ERROR log lines remain; no other ERROR sources were found. Physical print validation of 2.3 remains pending."
+}
