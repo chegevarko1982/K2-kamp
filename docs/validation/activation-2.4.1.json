@@ -1,0 +1,21 @@
+{
+  "version": "2.4.1",
+  "timestamp_moscow": "2026-10-20T13:56:58.773713+03:00",
+  "checks": {
+    "printer_ready": true,
+    "all_payload_and_source_hashes_match": true,
+    "loaded_start_print_matches_v241": true,
+    "loaded_lan_entry_matches_v241": true,
+    "kamp_ready": true,
+    "durable_recovery_loaded": true,
+    "kamp_idle": true,
+    "motor_ready": true,
+    "no_active_file": true,
+    "all_heater_targets_zero": true,
+    "default_profile_unchanged": true,
+    "no_noncallback_errors_in_start_segment": true,
+    "boot_stabilization_elapsed": true
+  },
+  "device_uptime_seconds": 204.84,
+  "motion_or_heating_commands_sent": false
+}

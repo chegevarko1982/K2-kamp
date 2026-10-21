@@ -1,0 +1,56 @@
+{
+  "version": "2.4.1-candidate",
+  "baseline": "2.4",
+  "files": {
+    "/mnt/UDISK/printer_data/config/gcode_macro.cfg": {
+      "before_sha256": "c0af6594aea0f8974545acbf0e7955564f7a4b9d79e462da19275fee0e687a90",
+      "after_sha256": "24c9237b9534db01787212485f370e6a8cf2e9135ad85d0568d0271bcd9b4d04",
+      "bytes": 38710
+    },
+    "/mnt/UDISK/printer_data/config/KAMP/Adaptive_Meshing.cfg": {
+      "before_sha256": "9c3f063ea80cbe3fbc6abc170bc9acae7a166c81fe316d7b5721bdd8c578f3f6",
+      "after_sha256": "9c3f063ea80cbe3fbc6abc170bc9acae7a166c81fe316d7b5721bdd8c578f3f6",
+      "bytes": 12948
+    },
+    "/mnt/UDISK/printer_data/config/KAMP/Full_Bed_Calibrate.cfg": {
+      "before_sha256": "bcb04718722365babdf330ca42b7b9b6098d49a452a5d23307cca75c0862ebe7",
+      "after_sha256": "bcb04718722365babdf330ca42b7b9b6098d49a452a5d23307cca75c0862ebe7",
+      "bytes": 1903
+    },
+    "/mnt/UDISK/printer_data/config/KAMP/Guarded_Commands.cfg": {
+      "before_sha256": "365b6a2c315953e1edf804fe9c9beaab8f9baae0cb92f1814a7f44b562139a0f",
+      "after_sha256": "365b6a2c315953e1edf804fe9c9beaab8f9baae0cb92f1814a7f44b562139a0f",
+      "bytes": 2915
+    },
+    "/mnt/UDISK/printer_data/config/KAMP/KAMP_Settings.cfg": {
+      "before_sha256": "ad6001e5a4ec81a60a373d93e4da73a72b404136e5edb33bdf6caa0eb285e77f",
+      "after_sha256": "ad6001e5a4ec81a60a373d93e4da73a72b404136e5edb33bdf6caa0eb285e77f",
+      "bytes": 469
+    },
+    "/mnt/UDISK/printer_data/config/printer.cfg": {
+      "before_sha256": "90ecbdc56d50296373e4f62c58d58a0239e73086ce488a8bf74ccdedca8b5344",
+      "after_sha256": "90ecbdc56d50296373e4f62c58d58a0239e73086ce488a8bf74ccdedca8b5344",
+      "bytes": 10346
+    },
+    "/usr/share/klipper/klippy/extras/gcode_move.py": {
+      "before_sha256": "a49086bfacdaa96ba8c3c4892b64c1687cf880f350643a4e903bd36d9a36b300",
+      "after_sha256": "a49086bfacdaa96ba8c3c4892b64c1687cf880f350643a4e903bd36d9a36b300",
+      "bytes": 46815
+    },
+    "/usr/share/klipper/klippy/extras/kamp_recovery.py": {
+      "before_sha256": "1d46ce2835cbdfa30b042cf1bec26ef1f4cfb48e8dc5fddddaafdad9c144be2d",
+      "after_sha256": "029615ae95dfec553052eaeee64bbf624d198c65a1909d99dc66ecb607101caf",
+      "bytes": 38301
+    },
+    "/usr/share/klipper/klippy/extras/restore_bed_mesh.py": {
+      "before_sha256": "4b9ca80a4574c16c2d51a2858e20e1d353c4e49ff67948a691237b1de91df2f0",
+      "after_sha256": "974732bcf136f69794475f611f92e9487d15f7d43bb8235d1dda2da478c9d376",
+      "bytes": 15439
+    },
+    "/usr/share/klipper/klippy/extras/virtual_sdcard.py": {
+      "before_sha256": "c39c839706c4152828e144dda1fc23f7bdaacc426dc8241e77ac9d90235d54c6",
+      "after_sha256": "c39c839706c4152828e144dda1fc23f7bdaacc426dc8241e77ac9d90235d54c6",
+      "bytes": 77171
+    }
+  }
+}

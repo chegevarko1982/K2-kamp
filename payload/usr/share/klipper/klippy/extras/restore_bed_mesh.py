@@ -5,13 +5,14 @@ Runtime compatibility checks deliberately reject unverified callback layouts.
 """
 import logging
 import math
+from extras.kamp_recovery import Recovery, RequestRefused
 
 
 class CommandRefused(Exception):
     """A rejected external request must not disturb a valid running job."""
 
 
-class BedMeshOverride:
+class BedMeshOverride(Recovery):
     def __init__(self, config):
         self.printer = config.get_printer()
         self.gcode = self.printer.lookup_object('gcode')
@@ -27,6 +28,7 @@ class BedMeshOverride:
         self.manual_busy = False
         self.full_armed = False
         self.probing = False
+        self._configure_recovery(config)
         commands = {
             'KAMP_VALIDATE_START': self.cmd_VALIDATE_START,
             'KAMP_VALIDATE_FULL': self.cmd_VALIDATE_FULL,
@@ -49,7 +51,7 @@ class BedMeshOverride:
         def run(gcmd):
             try:
                 return callback(gcmd)
-            except CommandRefused as exc:
+            except (CommandRefused, RequestRefused) as exc:
                 raise gcmd.error('KAMP: ' + str(exc)) from exc
             except Exception as exc:
                 self._safe_stop()
@@ -96,6 +98,7 @@ class BedMeshOverride:
             if endpoints['update_mesh'] != self._guard_update_mesh:
                 raise RuntimeError('update_mesh webhook guard registration failed')
             self.upstream_cmd = BedMeshCalibrate.cmd_BED_MESH_CALIBRATE.__get__(bmc, type(bmc))
+            self._init_recovery()
             self.ready = True
             self.error = ''
             logging.info('KAMP v2: dedicated _KAMP_PROBE ready; layout=%s', self.layout)
@@ -109,11 +112,11 @@ class BedMeshOverride:
     def get_status(self, eventtime):
         return {'ready': self.ready, 'error': self.error, 'active': self.active,
                 'armed': self.armed, 'faulted': self.faulted, 'manual_busy': self.manual_busy, 'probing': self.probing,
-                'session_only': True, 'layout': dict(self.layout)}
+                'session_only': False, 'recovering': self.recovering, 'preparation_ready': self.preparation_ready, 'layout': dict(self.layout)}
 
     def _guard_update_mesh(self, request):
         # Refuse before mutating the matrix or invoking any save/load/CXSAVE.
-        if not self.ready or self.active or self.armed or self.manual_busy or self.probing or self.faulted:
+        if not self.ready or self.active or self.recovering or self.armed or self.manual_busy or self.probing or self.faulted:
             raise request.error('KAMP: mesh editing is blocked during this session')
         return self.original_update_mesh(request)
 
@@ -143,6 +146,8 @@ class BedMeshOverride:
             logging.exception('KAMP could not turn off heaters')
             self.printer.invoke_shutdown('KAMP could not turn off heaters')
         try:
+            self._invalidate_checkpoint()
+            self._invalidate_preparation()
             self._clear()
         except Exception:
             logging.exception('KAMP could not clear mesh state')
@@ -185,6 +190,9 @@ class BedMeshOverride:
         if status['state'] != 'printing':
             raise gcmd.error('KAMP START_PRINT must execute from a print file')
         self._objects()
+        prepared = self.printer.lookup_object('gcode_macro START_PRINT').get_status(0)['prepare']
+        if int(prepared) == 1 and not self.preparation_ready:
+            raise gcmd.error('LAN preparation has no valid KAMP optical baseline; restart preparation')
         self.armed = True
 
     def cmd_PROBE(self, gcmd):
@@ -231,6 +239,7 @@ class BedMeshOverride:
                     raise gcmd.error('unverified or incomplete adaptive probe completion')
                 self.session_mesh = self.bedmesh.get_mesh()
                 self.active = True
+                self._save_checkpoint()
         finally:
             self.probing = False
             self.bedmesh.save_profile = original_save
@@ -243,6 +252,8 @@ class BedMeshOverride:
 
     def cmd_FULL_CALIBRATE(self, gcmd):
         self.cmd_VALIDATE_FULL(gcmd)
+        self._invalidate_checkpoint()
+        self._invalidate_preparation()
         sensor = self.printer.lookup_object('filament_switch_sensor filament_sensor')
         enabled = bool(sensor.get_status(0)['enabled'])
         self.manual_busy = True
@@ -273,11 +284,16 @@ class BedMeshOverride:
             raise CommandRefused('this job was aborted; cancel it and start a new file, do not resume')
 
     def cmd_SESSION_CLEAR(self, gcmd):
+        self._invalidate_checkpoint()
+        self._invalidate_preparation()
         self._clear()
 
     def cmd_RESTORE_SESSION(self, gcmd):
         self._require_ready(gcmd)
-        if not self.active or self.session_mesh is None:
+        if self.recovering and not self.recovery_optical_done:
+            self.bedmesh.set_mesh(None)
+            return
+        if not (self.active or self.recovering) or self.session_mesh is None:
             raise gcmd.error('no active KAMP mesh to restore')
         self.bedmesh.set_mesh(self.session_mesh)
 

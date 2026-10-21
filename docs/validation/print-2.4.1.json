@@ -1,0 +1,32 @@
+{
+  "observation_moscow": "20261020_140739",
+  "slicer": "Creality Print 7.3.0.6157 over LAN",
+  "state": "printing",
+  "layer_observed": 1,
+  "optical_descents_observed": 1,
+  "rough_G29_mode": true,
+  "hot_preparation_completed": true,
+  "mesh": {
+    "grid": [
+      4,
+      4
+    ],
+    "min": [
+      127.5,
+      127.5
+    ],
+    "max": [
+      222.48,
+      222.48
+    ],
+    "measured_range_mm": 0.125
+  },
+  "checkpoint_checksum_valid": true,
+  "eeprom_generation_present": true,
+  "eeprom_generation_checksum_valid": true,
+  "job_ids_match": true,
+  "user_confirmed_printing": true,
+  "visual_first_layer_quality_confirmed": false,
+  "physical_power_loss_recovery_validated": false,
+  "complete_print_confirmed": false
+}

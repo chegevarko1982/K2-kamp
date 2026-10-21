@@ -1,0 +1,10 @@
+{
+  "approved_for_install": true,
+  "manifest_sha256": "82d575813566a009c207aff5c0d4cef57691e26870ab7143c685c1acfbb7c12f",
+  "installer_sha256": "b71fa23338ca383d4542039942cb1e5973f97304bbc7a8d76c61f807bc02a0c8",
+  "approved_aborted_test_cleanup_sha256": "4ca12fbc71a9c47d6e17e7944c0966c4fce81693da390c996eaa025ddcd47482",
+  "reviewed_on": "2026-10-20",
+  "scope": "Exact guarded cleanup of the confirmed stopped 2.4 acceptance test; standard successful preflight; controlled installation; manual full power cycle and startup validation. Do not resume the aborted test.",
+  "hardware_validated": false,
+  "review": "Astra-review.md"
+}

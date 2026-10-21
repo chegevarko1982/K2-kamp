@@ -1,0 +1,9 @@
+{
+  "approved_for_install": true,
+  "manifest_sha256": "f5f3b14edd290ae8e09c2d1a0954a5d9cbac97ca36670d3fd335a7a0917d5f3d",
+  "installer_sha256": "033f930e1aaea285c0232a79e01ec0a7346c01bfff4d2e5b601f7bea8b73a302",
+  "reviewed_on": "2026-10-20",
+  "scope": "Controlled installation after successful built-in preflight, followed by manual full power cycle and read-only startup validation. Hardware print and power-loss recovery acceptance remain outstanding.",
+  "hardware_validated": false,
+  "review": "Astra-review.md"
+}

@@ -1,0 +1,23 @@
+{
+  "firmware": "Creality 1.1.7.0 / Klipper 09faed31-dirty",
+  "fixtures": {
+    "tests/fixtures/config/sensorless.cfg": "9d635c7410d49325fbca7f70108451fbac39f6d5b3fed06e49a9507934764a55",
+    "tests/fixtures/install_transaction.py": "8dca24ab811f0e811f4c481b5c66b1fcfa7d53392c089ca47e5c82e596c31d6e",
+    "tests/fixtures/klipper/extras/base_info.py": "35cea1f0a2cf1e2f13590da2ae6c0ae7bdbce7cab1c289ad9504ab0927fec659",
+    "tests/fixtures/klipper/extras/bed_mesh.py": "00a6c3c2da5938b28e29f562d07966c6854bf3657104245e8709c8a5d42ebec0",
+    "tests/fixtures/klipper/extras/bl24c16f.py": "3314731819318b632294c2cbacbfaa04cc1e8a9e9a33370212ed9417c2686168",
+    "tests/fixtures/klipper/extras/custom_macro.py": "3025bf4e824c15d0c87cd15aac83adf3303aac4e8458c97ab3febc8d17b57aa2",
+    "tests/fixtures/klipper/extras/gcode_move.py": "c6b709c6b8879695d6f9f0c0855107124f790fd686dc9b4b0e194dab1c995040",
+    "tests/fixtures/klipper/extras/homing.py": "cc847821cb60fb0a322e75685ea2c27e86d608a15ef4888a0cbe3dce16a2f765",
+    "tests/fixtures/klipper/extras/homing_override.py": "c11b4cdf7db5cb59037a107a09783c0dd0d89057e9d9a4e84c0c3e22013f632b",
+    "tests/fixtures/klipper/extras/print_stats.py": "3850151743659b22b61ec6daf013948c6de799de085138029d547b023d0d7341",
+    "tests/fixtures/klipper/extras/probe.py": "d6917fc49e31088096151291d89c0f69292362bbc8d36ac16ef8f767d1cad0a4",
+    "tests/fixtures/klipper/extras/stepper_enable.py": "2bd12d34dd1468bc9d8cc89f65d76c4f0de7dca9d896bd96b38b0a3647267517",
+    "tests/fixtures/klipper/extras/virtual_sdcard.py": "6502cd3d51e0c82b95049f374586bc64950fc03f6ff773587dd589c0fdd6cf71",
+    "tests/fixtures/klipper/extras/z_align.py": "4ebe29d7957c6e42d05f95d1fe9a5e40c4d9953fe70c3b7470914a7d1b8b2b1c",
+    "tests/fixtures/klipper/extras/z_tilt.py": "846bc1255ea48bd6501e695ccfe0f7b30a4265fd5ec8f9fba47d675207b2b31b",
+    "tests/fixtures/klipper/gcode.py": "fa0d037602a58d40d8694422ade76613961f2a1b6a71f61668b76a59c34680d5",
+    "tests/fixtures/klipper/stepper.py": "76271cf678b8ce627f77978d7b2fc27b20f58ae9eae38bcd400626036753fea2"
+  },
+  "install_transaction_origin": "Exact commit_payload function from Astra-reviewed work/update_kamp_v241.py COMMON; installer SHA-256 b71fa23338ca383d4542039942cb1e5973f97304bbc7a8d76c61f807bc02a0c8"
+}

@@ -1,0 +1,164 @@
+--- 2.4/mnt/UDISK/printer_data/config/gcode_macro.cfg
++++ 2.4.1/mnt/UDISK/printer_data/config/gcode_macro.cfg
+@@ -458,6 +458,7 @@
+   {% set BED_TEMP = params.BED_TEMP|default(60)|float %}
+   {% set EXTRUDER_WAITTEMP = (140.0|float)|int %}
+   {% set WAIT_TEMP = params.WAIT_TEMP|default(0)|int %}
++  KAMP_LAN_PREPARE WAIT_TEMP={WAIT_TEMP}
+   M106 S0 F1  #需要关闭模型风扇
+   M140 S{BED_TEMP}
+   M104 S{EXTRUDER_WAITTEMP}
+--- 2.4/usr/share/klipper/klippy/extras/kamp_recovery.py
++++ 2.4.1/usr/share/klipper/klippy/extras/kamp_recovery.py
+@@ -11,7 +11,7 @@
+ import uuid
+ 
+ 
+-EXPECTED_SOURCES = {'/usr/share/klipper/klippy/extras/base_info.py': '35cea1f0a2cf1e2f13590da2ae6c0ae7bdbce7cab1c289ad9504ab0927fec659', '/usr/share/klipper/klippy/extras/bl24c16f.py': '3314731819318b632294c2cbacbfaa04cc1e8a9e9a33370212ed9417c2686168', '/usr/share/klipper/klippy/extras/custom_macro.py': '3025bf4e824c15d0c87cd15aac83adf3303aac4e8458c97ab3febc8d17b57aa2', '/usr/share/klipper/klippy/extras/gcode_move.py': 'a49086bfacdaa96ba8c3c4892b64c1687cf880f350643a4e903bd36d9a36b300', '/usr/share/klipper/klippy/extras/homing.py': 'cc847821cb60fb0a322e75685ea2c27e86d608a15ef4888a0cbe3dce16a2f765', '/usr/share/klipper/klippy/extras/print_stats.py': '3850151743659b22b61ec6daf013948c6de799de085138029d547b023d0d7341', '/usr/share/klipper/klippy/extras/stepper_enable.py': '2bd12d34dd1468bc9d8cc89f65d76c4f0de7dca9d896bd96b38b0a3647267517', '/usr/share/klipper/klippy/extras/virtual_sdcard.py': 'c39c839706c4152828e144dda1fc23f7bdaacc426dc8241e77ac9d90235d54c6', '/usr/share/klipper/klippy/extras/z_align.py': '4ebe29d7957c6e42d05f95d1fe9a5e40c4d9953fe70c3b7470914a7d1b8b2b1c', '/usr/share/klipper/klippy/extras/z_tilt.py': '846bc1255ea48bd6501e695ccfe0f7b30a4265fd5ec8f9fba47d675207b2b31b', '/usr/share/klipper/klippy/stepper.py': '76271cf678b8ce627f77978d7b2fc27b20f58ae9eae38bcd400626036753fea2', '/usr/share/klipper/klippy/extras/bed_mesh.py': '00a6c3c2da5938b28e29f562d07966c6854bf3657104245e8709c8a5d42ebec0', '/usr/share/klipper/klippy/extras/probe.py': 'd6917fc49e31088096151291d89c0f69292362bbc8d36ac16ef8f767d1cad0a4', '/usr/share/klipper/klippy/gcode.py': 'fa0d037602a58d40d8694422ade76613961f2a1b6a71f61668b76a59c34680d5'}  # Filled by the package builder, pinned to this firmware.
++EXPECTED_SOURCES = {'/usr/share/klipper/klippy/extras/base_info.py': '35cea1f0a2cf1e2f13590da2ae6c0ae7bdbce7cab1c289ad9504ab0927fec659', '/usr/share/klipper/klippy/extras/bl24c16f.py': '3314731819318b632294c2cbacbfaa04cc1e8a9e9a33370212ed9417c2686168', '/usr/share/klipper/klippy/extras/custom_macro.py': '3025bf4e824c15d0c87cd15aac83adf3303aac4e8458c97ab3febc8d17b57aa2', '/usr/share/klipper/klippy/extras/gcode_move.py': 'a49086bfacdaa96ba8c3c4892b64c1687cf880f350643a4e903bd36d9a36b300', '/usr/share/klipper/klippy/extras/homing.py': 'cc847821cb60fb0a322e75685ea2c27e86d608a15ef4888a0cbe3dce16a2f765', '/usr/share/klipper/klippy/extras/print_stats.py': '3850151743659b22b61ec6daf013948c6de799de085138029d547b023d0d7341', '/usr/share/klipper/klippy/extras/stepper_enable.py': '2bd12d34dd1468bc9d8cc89f65d76c4f0de7dca9d896bd96b38b0a3647267517', '/usr/share/klipper/klippy/extras/virtual_sdcard.py': 'c39c839706c4152828e144dda1fc23f7bdaacc426dc8241e77ac9d90235d54c6', '/usr/share/klipper/klippy/extras/z_align.py': '4ebe29d7957c6e42d05f95d1fe9a5e40c4d9953fe70c3b7470914a7d1b8b2b1c', '/usr/share/klipper/klippy/extras/z_tilt.py': '846bc1255ea48bd6501e695ccfe0f7b30a4265fd5ec8f9fba47d675207b2b31b', '/usr/share/klipper/klippy/stepper.py': '76271cf678b8ce627f77978d7b2fc27b20f58ae9eae38bcd400626036753fea2', '/usr/share/klipper/klippy/extras/bed_mesh.py': '00a6c3c2da5938b28e29f562d07966c6854bf3657104245e8709c8a5d42ebec0', '/usr/share/klipper/klippy/extras/probe.py': 'd6917fc49e31088096151291d89c0f69292362bbc8d36ac16ef8f767d1cad0a4', '/usr/share/klipper/klippy/gcode.py': 'fa0d037602a58d40d8694422ade76613961f2a1b6a71f61668b76a59c34680d5', '/usr/share/klipper/klippy/extras/homing_override.py': 'c11b4cdf7db5cb59037a107a09783c0dd0d89057e9d9a4e84c0c3e22013f632b', '/mnt/UDISK/printer_data/config/sensorless.cfg': '9d635c7410d49325fbca7f70108451fbac39f6d5b3fed06e49a9507934764a55'}
+ 
+ 
+ class RequestRefused(Exception):
+@@ -86,7 +86,9 @@
+         self._selected_job = None
+         self._recovery_data = None
+         self._mechanical_generation = None
++        self._lan_home_deadline = None
+         commands = {
++            'KAMP_LAN_PREPARE': self.cmd_LAN_PREPARE,
+             'KAMP_ROUGH_HOME': self.cmd_ROUGH_HOME,
+             'KAMP_HOT_PREPARE': self.cmd_HOT_PREPARE,
+             'KAMP_START_FILE': self.cmd_START_FILE,
+@@ -109,6 +111,7 @@
+         from extras.probe import ProbePointsHelper
+         from stepper import MCU_stepper
+         from extras.gcode_move import GCodeMove
++        from extras.homing_override import HomingOverride
+         if '/usr/share/klipper/klippy/stepper.py' not in EXPECTED_SOURCES:
+             raise ValueError('runtime stepper.py must be reviewed before installation')
+         for path, expected in EXPECTED_SOURCES.items():
+@@ -120,6 +123,16 @@
+         self.hm = self.printer.lookup_object('homing')
+         self.gm = self.printer.lookup_object('gcode_move')
+         self.sd = self.printer.lookup_object('virtual_sdcard')
++        self.home_override = self.printer.lookup_object('homing_override')
++        registered_home = self._dispatch_target(self.gcode.ready_gcode_handlers['G28'])
++        if (getattr(self.home_override.cmd_G28, '__func__', None) is not HomingOverride.cmd_G28
++                or getattr(self.home_override.cmd_G28, '__self__', None) is not self.home_override
++                or getattr(registered_home, '__func__', None) is not HomingOverride.cmd_G28
++                or getattr(registered_home, '__self__', None) is not self.home_override
++                or getattr(self.home_override.prev_G28, '__func__', None) is not PrinterHoming.cmd_G28
++                or getattr(self.home_override.prev_G28, '__self__', None) is not self.hm):
++            raise ValueError('unreviewed G28 override/underlying dispatcher')
++        self._stock_g28 = registered_home
+         if self.za.pin_len != 2:
+             raise ValueError('KAMP recovery requires the reviewed dual-Z layout')
+         checks = ((self.za.cmd_ZDOWN, Zalign.cmd_ZDOWN),
+@@ -151,6 +164,12 @@
+         self.hm.write_real_zmax = self._stage_datum
+         self.zt.retry_helper.write_z_adjustment = self._stage_adjustment
+         self.gm.cmd_CX_RESTORE_GCODE_STATE = self._restore_stock
++        # G28 is traditional G-code: preserve bare X/Y/Z parameters by wrapping
++        # its Python callback, rather than routing through an extended macro.
++        self.gcode.register_command('G28', None)
++        guarded_home = self._guard(self._dispatch_home)
++        self.gcode.register_command('G28', guarded_home)
++        self.home_override.cmd_G28 = guarded_home
+         # ZMesh registers these commands dynamically on its first instance.
+         # Intercept after default has loaded, before any print can begin.
+         for name in ('BED_MESH_SET_DISABLE','BED_MESH_SET_ENABLE'):
+@@ -206,6 +225,7 @@
+         self.za.zdown_switch_enable = 0
+ 
+     def _invalidate_preparation(self):
++        self._lan_home_deadline = None
+         self.preparation_ready = self._preparing = self._hot_running = False
+         self._optical_reference = None
+         self._mechanical_generation = None
+@@ -312,10 +332,49 @@
+         else:
+             atomic_json(self.zt.stepper_adjustment_path, values)
+ 
+-    def cmd_ROUGH_HOME(self, gcmd):
++    def cmd_LAN_PREPARE(self, gcmd):
+         self._require_ready(gcmd)
+         state = self.printer.lookup_object('print_stats').get_status(0)['state']
++        if (self.active or self.recovering or self.armed or self.manual_busy
++                or self._preparing or self._hot_running or self._optical_running
++                or state in ('printing', 'paused')):
++            raise RequestRefused('LAN preparation is not allowed during this job')
++        wait = gcmd.get_int('WAIT_TEMP', 0)
++        if wait not in (0, 1):
++            raise ValueError('invalid LAN WAIT_TEMP')
++        if wait:
++            if not self.preparation_ready:
++                raise ValueError('LAN homing did not create a KAMP optical baseline')
++            return
++        self._invalidate_checkpoint()
++        self._invalidate_preparation()
++        # The actual daemon sends PRINT_TEMP_SET followed immediately by G28 Z.
++        # A stale marker must never turn a later manual/recovery home into prep.
++        self._lan_home_deadline = self.printer.get_reactor().monotonic() + 120.0
++        logging.info('KAMP 2.4.1: LAN homing authorization issued')
++
++    def _dispatch_home(self, gcmd):
++        if self.home_override.in_script or self._preparing or self._hot_running or self.recovering:
++            return self._stock_g28(gcmd)
++        params = gcmd.get_command_parameters()
++        homes_z = 'Z' in params or not any(axis in params for axis in 'XYZ')
++        if self._lan_home_deadline is None or not homes_z:
++            return self._stock_g28(gcmd)
++        deadline = self._lan_home_deadline
++        self._lan_home_deadline = None  # Consume before any physical action.
++        if self.printer.get_reactor().monotonic() > deadline:
++            raise ValueError('LAN homing authorization expired; restart preparation')
++        logging.info('KAMP 2.4.1: entering LAN optical preparation via G28')
++        return self._run_rough(gcmd, lambda: self._stock_g28(gcmd))
++
++    def cmd_ROUGH_HOME(self, gcmd):
+         original = gcmd.get_int('ORIGINAL', 0)
++        command = '_KAMP_ROUGH_BASE ' + gcmd.get_raw_command_parameters() if original else 'G28'
++        return self._run_rough(gcmd, lambda: self.gcode.run_script_from_command(command), original)
++
++    def _run_rough(self, gcmd, home, original=0):
++        self._require_ready(gcmd)
++        state = self.printer.lookup_object('print_stats').get_status(0)['state']
+         if self.active or self.recovering or (state in ('printing','paused') and (original or not self.armed)):
+             raise RequestRefused('rough preparation is not allowed during this job')
+         self._invalidate_checkpoint()
+@@ -327,13 +386,13 @@
+         try:
+             self._flags(True)
+             self.za.zdown_switch_enable = 1
+-            command = '_KAMP_ROUGH_BASE ' + gcmd.get_raw_command_parameters() if original else 'G28'
+-            self.gcode.run_script_from_command(command)
++            home()
+             self._settle()
+             if (self._optical_sequence != sequence + 1 or self._optical_reference is None
+                     or not self.za.is_already_zodwn or self._cold_datum is None):
+                 raise ValueError('no complete single optical baseline from rough preparation')
+             self.preparation_ready = True
++            logging.info('KAMP 2.4.1: optical preparation complete; generation=%s', self._optical_sequence)
+             success = True
+         finally:
+             self._preparing = False
+@@ -382,6 +441,7 @@
+             self._validate_mechanics(mechanics)
+             self._publish_mechanics(mechanics)
+             self._mechanical_generation = mechanics
++            logging.info('KAMP 2.4.1: hot preparation complete; mechanics=%s', mechanics)
+         finally:
+             self._hot_running = False
+             self._flags(False)
+--- 2.4/usr/share/klipper/klippy/extras/restore_bed_mesh.py
++++ 2.4.1/usr/share/klipper/klippy/extras/restore_bed_mesh.py
+@@ -190,6 +190,9 @@
+         if status['state'] != 'printing':
+             raise gcmd.error('KAMP START_PRINT must execute from a print file')
+         self._objects()
++        prepared = self.printer.lookup_object('gcode_macro START_PRINT').get_status(0)['prepare']
++        if int(prepared) == 1 and not self.preparation_ready:
++            raise gcmd.error('LAN preparation has no valid KAMP optical baseline; restart preparation')
+         self.armed = True
+ 
+     def cmd_PROBE(self, gcmd):

@@ -1,0 +1,15 @@
+{
+  "exported_on": "2026-10-21",
+  "version": "2.4.1",
+  "portable_repository_suites": {
+    "recovery": 44,
+    "core": 35,
+    "lan": 19,
+    "installer_transaction": 5
+  },
+  "tests": 103,
+  "success": true,
+  "payload_files_verified": 10,
+  "network_or_printer_access": false,
+  "scope": "Offline export checks; hardware and EEPROM mocked. Physical power-loss recovery remains unverified."
+}
