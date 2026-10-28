@@ -48,8 +48,8 @@
     },
     "/usr/share/klipper/klippy/extras/restore_bed_mesh.py": {
       "repository_path": "payload/usr/share/klipper/klippy/extras/restore_bed_mesh.py",
-      "sha256": "974732bcf136f69794475f611f92e9487d15f7d43bb8235d1dda2da478c9d376",
-      "bytes": 15439
+      "sha256": "0c99a713ce7704360eb420ed45676ed14d42ccb0f834ac33b444747c900a3660",
+      "bytes": 15624
     },
     "/usr/share/klipper/klippy/extras/virtual_sdcard.py": {
       "repository_path": "payload/usr/share/klipper/klippy/extras/virtual_sdcard.py",

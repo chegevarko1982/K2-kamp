@@ -176,8 +176,10 @@ class BedMeshOverride(Recovery):
                 if len(point) != 2 or not all(math.isfinite(float(v)) for v in point):
                     raise ValueError('invalid object coordinates')
                 points.append(tuple(float(v) for v in point))
-        if any(not (5 <= x <= 345 and 5 <= y <= 345) for x, y in points):
-            raise ValueError('object outside supported mesh limits 5..345 mm')
+        # Objects reaching past the configured mesh window are clamped to it: the
+        # adaptive macro already clamps the probed area to mesh_min/mesh_max, and
+        # _KAMP_PROBE below still requires 5..345 mm, so no point is probed outside.
+        points = [(min(max(x, 5.0), 345.0), min(max(y, 5.0), 345.0)) for x, y in points]
         return points
 
     def cmd_VALIDATE_START(self, gcmd):
